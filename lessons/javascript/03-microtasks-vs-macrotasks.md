@@ -33,25 +33,109 @@
 
 ## 1. Introduction
 
-### What is it?
+### What is a Task?
 
 JavaScript is single-threaded — one call stack, one thing executing at a time.
-Yet it handles timers, network requests, user events, and Promises without freezing.
-The mechanism behind this is the **Event Loop**, and at its core is a two-tier
-priority system: **microtasks** and **macrotasks**.
+Yet it handles timers, network requests, and user events without freezing. How?
 
-**Macrotask (Task):** A unit of work scheduled by the browser's task scheduler.
-Each macrotask gets one full turn of the event loop. Examples: `setTimeout`,
-`setInterval`, `setImmediate` (Node.js), I/O callbacks, UI rendering events.
+When async work completes (a timer fires, a network response arrives, a user clicks),
+the browser doesn't interrupt your running code. Instead, it puts a **callback** into
+a queue. Once the call stack is empty, the **Event Loop** picks the next callback from
+the queue and runs it. Each such picked-up callback is called a **task** (or a job).
 
-**Microtask:** A unit of work that runs *immediately after the current task completes*,
-before the browser gets a chance to render or pick up the next macrotask. Examples:
-Promise `.then`/`.catch`/`.finally` callbacks, `queueMicrotask()`, `MutationObserver`.
+```
+Call Stack empty?
+    ↓ yes
+Pick next callback from queue → run it (this is one "task")
+    ↓ done
+Call Stack empty again?
+    ↓ yes
+Pick next callback → run it
+    ↓ ... and so on forever
+```
 
-> **Analogy:** Imagine a restaurant kitchen. A macrotask is a full order — the chef
-> completes it, then the waiter takes it out. A microtask is a verbal instruction the
-> chef gives themselves mid-order ("add more salt") — it must be done *before* that
-> order leaves the kitchen, no matter how many such instructions pile up.
+This queue-based callback system is what lets JavaScript appear concurrent despite
+being single-threaded. Every async operation you write — `setTimeout`, `fetch`,
+`addEventListener` — eventually lands a callback in this queue as a **task**.
+
+### So what are Macrotasks and Microtasks?
+
+As JavaScript evolved, it turned out **not all tasks are equal**. Two distinct
+categories emerged, with different queues and different priorities:
+
+---
+
+**Macrotask (also just called "Task"):**
+A task scheduled by the browser's task scheduler — typically representing work
+triggered by external events or timers. The event loop picks up **one macrotask
+per turn**, runs it to completion, then checks what to do next.
+
+```
+What produces macrotasks:
+  setTimeout(fn, delay)      → fn is a macrotask callback
+  setInterval(fn, delay)     → fn is a macrotask callback
+  setImmediate(fn)           → Node.js only
+  I/O callbacks              → file read, network (Node.js)
+  User events                → click, keydown, scroll
+  MessageChannel.postMessage → fn is a macrotask callback
+```
+
+Think of a macrotask as a **complete unit of work** — the event loop runs one,
+then pauses to check if anything else needs to happen (rendering, higher-priority
+work) before picking the next one.
+
+---
+
+**Microtask:**
+A task that is scheduled to run **immediately after the current task finishes**,
+before the event loop does anything else — before rendering, before the next
+macrotask. The event loop drains the **entire microtask queue** after every
+single macrotask.
+
+```
+What produces microtasks:
+  Promise.then(fn)           → fn is a microtask callback
+  Promise.catch(fn)          → fn is a microtask callback
+  Promise.finally(fn)        → fn is a microtask callback
+  queueMicrotask(fn)         → fn is a microtask callback
+  await (inside async fn)    → code after await is a microtask continuation
+  MutationObserver callback  → microtask
+  process.nextTick(fn)       → Node.js only (even higher priority than Promise)
+```
+
+Think of a microtask as an **urgent follow-up** — something that must happen
+before the current unit of work is considered truly done.
+
+---
+
+> **Analogy:** Imagine a customer service desk. A macrotask is serving a new
+> customer — you take one ticket, serve them fully, then move on. A microtask
+> is a sticky note that customer leaves saying "also do this before you call
+> the next number" — you must handle all sticky notes before calling the
+> next customer, no matter how many pile up.
+
+### Why does the distinction matter?
+
+```javascript
+console.log('A');
+
+setTimeout(() => console.log('B'), 0);   // macrotask — goes to macrotask queue
+
+Promise.resolve().then(() => console.log('C')); // microtask — goes to microtask queue
+
+console.log('D');
+
+// Output: A → D → C → B
+//                ↑     ↑
+//           microtask  macrotask
+//           wins       loses
+```
+
+Even though `setTimeout` has 0ms delay, it is a macrotask. The Promise `.then`
+callback is a microtask. After the synchronous code (`A`, `D`) finishes, all
+microtasks drain first (`C`), then the macrotask runs (`B`).
+
+This ordering is the source of most async interview questions.
 
 ### Why should a senior frontend engineer care?
 
@@ -88,12 +172,15 @@ starve rendering (bad — UI freezes). Two tiers solves this cleanly.
 
 ### The historical path
 
-- **ES5 and earlier:** Only macrotasks existed (`setTimeout`, events). Promises
-  didn't exist; callbacks were the async primitive. Order was unpredictable.
-- **ES6 (2015):** Promises introduced. The spec mandated that `.then` callbacks run
-  as **microtasks** — a new queue with higher priority than the macrotask queue.
-- **ES2020+:** `queueMicrotask()` added as an explicit API to schedule microtasks
-  without creating a Promise.
+- **ES5 and earlier:** JavaScript only had one type of deferred callback — what we
+  now call macrotasks. `setTimeout` and DOM events put callbacks in a single flat
+  queue. Promises didn't exist; nested callbacks ("callback hell") were the async
+  primitive. There was no concept of a "higher-priority" queue.
+- **ES6 (2015):** Promises were introduced. The spec mandated that `.then` callbacks
+  run as **microtasks** — a new, separate queue that drains completely after every
+  macrotask. This gave Promises a predictable, high-priority execution slot.
+- **ES2020+:** `queueMicrotask()` was added as an explicit API to schedule microtasks
+  directly, without having to construct a Promise just to get microtask timing.
 
 ### Engineering Perspective
 
