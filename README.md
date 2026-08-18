@@ -81,6 +81,12 @@ Each lesson follows a consistent 19-section structure:
 | 03 | [Microtasks vs Macrotasks (Event Loop Deep Dive)](./lessons/javascript/03-microtasks-vs-macrotasks.md) | JS | Week 3 |
 | 04 | [Web Workers](./lessons/javascript/02-web-workers.md) | JS | Week 4 |
 
+### Angular
+
+| # | Topic | Phase | Week |
+|---|---|---|---|
+| 01 | [Component Lifecycle Hooks Deep Dive](./lessons/angular/01-component-lifecycle-hooks.md) | Angular | Week 1 |
+
 More lessons are added weekly as the schedule progresses.
 
 ---
