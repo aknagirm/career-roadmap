@@ -78,8 +78,9 @@ Each lesson follows a consistent 19-section structure:
 |---|---|---|---|
 | 01 | [Execution Context, Call Stack & Variable Environment](./lessons/javascript/01-execution-context-call-stack.md) | JS | Week 1 |
 | 02 | [Scope Chain, Lexical Scope & Hoisting](./lessons/javascript/02-scope-chain-lexical-scope-hoisting.md) | JS | Week 1 |
-| 03 | [Microtasks vs Macrotasks (Event Loop Deep Dive)](./lessons/javascript/03-microtasks-vs-macrotasks.md) | JS | Week 3 |
-| 04 | [Web Workers](./lessons/javascript/02-web-workers.md) | JS | Week 4 |
+| 03 | [Closures — Definition, Practical Uses, Closure Traps](./lessons/javascript/03-closures.md) | JS | Week 1 |
+| 04 | [Microtasks vs Macrotasks (Event Loop Deep Dive)](./lessons/javascript/03-microtasks-vs-macrotasks.md) | JS | Week 3 |
+| 05 | [Web Workers](./lessons/javascript/02-web-workers.md) | JS | Week 4 |
 
 ### Angular
 
