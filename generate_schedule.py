@@ -671,77 +671,73 @@ BEHAVIORAL_STORIES = [
 
 def build_daily_schedule():
     """
-    Build day-by-day rows following the brain-learning model:
-    Mon – Core A
-    Tue – Core B
-    Wed – Core C + DSA
-    Thu – Core D + Layer3 (AI/SD sprinkle)
-    Fri – Core E (coding) + LeetCode + Behavioral
-    Sat – Mock + Revision + Project
-    Sun – Reading + Portfolio + Rest
+    One topic per day — no multi-topic cramming.
+
+    Mon – Core subtopic 1
+    Tue – Core subtopic 2
+    Wed – Core subtopic 3
+    Thu – Core subtopic 4
+    Fri – Core subtopic 5  (coding / practice session)
+    Sat – Mock Interview + Behavioral + Revision  (dedicated block, no theory)
+    Sun – Rest + Project + Portfolio  (light, protected)
     """
     rows = []
     current = START_DATE
-    week_num = 0
     phase_week_idx = 0
-    dsa_i = lc_i = beh_i = mock_i = sun_i = l3_i = 0
+    mock_i = sun_i = 0
 
     for week_offset in range(TOTAL_WEEKS):
         week_num = week_offset + 1
         pw = PHASE_WEEKS[phase_week_idx % len(PHASE_WEEKS)]
         phase_week_idx += 1
-        subs = pw["subtopics"]  # 5 subtopics for Mon-Fri
+        subs = pw["subtopics"]  # exactly 5 subtopics — one per weekday
 
         for day_offset in range(7):
             d = current + timedelta(days=day_offset)
             dow = d.weekday()
             month_num = min(((d - START_DATE).days // 28) + 1, 7)
 
-            if dow == 0:   # Monday
-                core = subs[0]
-                full = f"[Core] {core}"
+            if dow == 0:    # Monday
+                full = subs[0]
                 focus = pw["phase"]
-                planned_hrs = 3
+                planned_hrs = 2
 
             elif dow == 1:  # Tuesday
-                core = subs[1]
-                full = f"[Core] {core}"
+                full = subs[1]
                 focus = pw["phase"]
-                planned_hrs = 3
+                planned_hrs = 2
 
             elif dow == 2:  # Wednesday
-                core = subs[2]
-                dsa = DSA_TOPICS[dsa_i % len(DSA_TOPICS)]; dsa_i += 1
-                full = f"[Core] {core}  |  [DSA] {dsa}"
-                focus = f"{pw['phase']} + DSA"
-                planned_hrs = 3
+                full = subs[2]
+                focus = pw["phase"]
+                planned_hrs = 2
 
             elif dow == 3:  # Thursday
-                core = subs[3]
-                l3 = LAYER3_ROTATION[l3_i % len(LAYER3_ROTATION)]; l3_i += 1
-                full = f"[Core] {core}  |  [Layer3] {l3}"
-                focus = f"{pw['phase']} + Long-term"
-                planned_hrs = 3
+                full = subs[3]
+                focus = pw["phase"]
+                planned_hrs = 2
 
             elif dow == 4:  # Friday
-                core = subs[4]
-                lc = LEETCODE_TOPICS[lc_i % len(LEETCODE_TOPICS)]; lc_i += 1
-                beh = BEHAVIORAL_TOPICS[beh_i % len(BEHAVIORAL_TOPICS)]; beh_i += 1
-                full = f"[Core] {core}  |  [LC] {lc}  |  [Behavioral] {beh}"
-                focus = f"{pw['phase']} + LeetCode + Behavioral"
+                full = subs[4]
+                focus = pw["phase"]
+                planned_hrs = 2
+
+            elif dow == 5:  # Saturday — Mock + Revision only
+                # Mock topic matches what was studied this week
+                mock = f"Q&A + coding: {pw['week_label'].split(': ', 1)[-1]}"
+                # Behavioral rotates through stories you already know (Boeing experience)
+                beh  = BEHAVIORAL_TOPICS[mock_i % len(BEHAVIORAL_TOPICS)]
+                mock_i += 1
+                full  = f"Mock: {mock}  |  Behavioral: {beh}  |  Revise weak areas from this week"
+                focus = "Mock + Revision"
                 planned_hrs = 3
 
-            elif dow == 5:  # Saturday
-                mock = MOCK_TOPICS[mock_i % len(MOCK_TOPICS)]; mock_i += 1
-                full = f"[Mock] {mock}  |  Revise weak areas from this week"
-                focus = "Mock + Revision + Project"
-                planned_hrs = 5
-
-            else:           # Sunday
-                sun = SUNDAY_TOPICS[sun_i % len(SUNDAY_TOPICS)]; sun_i += 1
-                full = f"{sun}"
-                focus = "Reading + Portfolio + Rest"
-                planned_hrs = 2
+            else:           # Sunday — rest / project / portfolio
+                sun = SUNDAY_TOPICS[sun_i % len(SUNDAY_TOPICS)]
+                sun_i += 1
+                full  = sun
+                focus = "Rest + Project"
+                planned_hrs = 1
 
             rows.append({
                 "week":        week_num,
@@ -754,8 +750,8 @@ def build_daily_schedule():
                 "full_topic":  full,
                 "planned_hrs": planned_hrs,
                 "actual_hrs":  "",
-                "done":        "",    # dropdown: Completed / In Progress
-                "coding_done": "",    # dropdown: Yes / No
+                "done":        "",
+                "coding_done": "",
                 "notes":       "",
             })
 
