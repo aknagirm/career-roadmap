@@ -9,7 +9,7 @@
 ### Easy (3)
 - [x] [344. Reverse String](https://leetcode.com/problems/reverse-string/) — [Analysis](../problems/two-pointers/0344-reverse-string.md)
 - [x] [26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) — [Analysis](../problems/two-pointers/0026-remove-duplicates-from-sorted-array.md)
-- [ ] [125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)
+- [x] [125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)
 
 ### Medium (2)
 - [x] [167. Two Sum II — Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/) — [Analysis](../problems/two-pointers/0167-two-sum-ii.md)
@@ -39,7 +39,7 @@
 
 ## Progress
 
-- Round 1: `4/5`
+- Round 1: `5/5`
 - Round 2: `0/6`
 - Round 3: `0/4`
-- Total: `4/15`
+- Total: `5/15`
