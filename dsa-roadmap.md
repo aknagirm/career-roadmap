@@ -39,7 +39,10 @@ Build fast lookup, state tracking, and controlled pointer movement.
 1. [ ] Hash Maps
 2. [ ] Stacks
 3. [ ] **Two Pointers**
+   - [x] [LeetCode 11 — Container With Most Water](dsa/problems/two-pointers/0011-container-with-most-water.md) · Medium · Python · Two Pointers + Greedy
+   - [x] [LeetCode 26 — Remove Duplicates from Sorted Array](dsa/problems/two-pointers/0026-remove-duplicates-from-sorted-array.md) · Easy · Python
    - [x] [LeetCode 167 — Two Sum II: Input Array Is Sorted](dsa/problems/two-pointers/0167-two-sum-ii.md) · Medium · Python
+   - [x] [LeetCode 344 — Reverse String](dsa/problems/two-pointers/0344-reverse-string.md) · Easy · Python
 4. [ ] Fast and Slow Pointer
 5. [ ] Sliding Window
 
