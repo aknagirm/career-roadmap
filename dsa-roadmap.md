@@ -32,63 +32,65 @@ flowchart LR
 
 This is the target curriculum, divided into a dependency-based learning order. Closely related items remain separate because each requires a different problem-solving reflex.
 
+Each pattern links to a 15-problem LeetCode list: **5 Easy, 8 Medium, and 2 Hard**, split into **Learn, Reinforce, and Interview Level** rounds. Narrow patterns include clearly labeled prerequisite and cross-pattern problems.
+
 ### Phase 1 — Foundations
 
 Build fast lookup, state tracking, and controlled pointer movement.
 
-1. [ ] Hash Maps
-2. [ ] Stacks
-3. [ ] **Two Pointers**
+1. [ ] [Hash Maps — 15 problems](dsa/problem-lists/01-hash-maps.md)
+2. [ ] [Stacks — 15 problems](dsa/problem-lists/02-stacks.md)
+3. [ ] **[Two Pointers — 15 problems](dsa/problem-lists/03-two-pointers.md)**
    - [x] [LeetCode 11 — Container With Most Water](dsa/problems/two-pointers/0011-container-with-most-water.md) · Medium · Python · Two Pointers + Greedy
    - [x] [LeetCode 26 — Remove Duplicates from Sorted Array](dsa/problems/two-pointers/0026-remove-duplicates-from-sorted-array.md) · Easy · Python
    - [x] [LeetCode 167 — Two Sum II: Input Array Is Sorted](dsa/problems/two-pointers/0167-two-sum-ii.md) · Medium · Python
    - [x] [LeetCode 344 — Reverse String](dsa/problems/two-pointers/0344-reverse-string.md) · Easy · Python
-4. [ ] Fast and Slow Pointer
-5. [ ] Sliding Window
+4. [ ] [Fast and Slow Pointer — 15 problems](dsa/problem-lists/04-fast-and-slow-pointer.md)
+5. [ ] [Sliding Window — 15 problems](dsa/problem-lists/05-sliding-window.md)
 
 ### Phase 2 — Ordered Data and Ranges
 
 Learn to exploit ordering instead of scanning every possibility.
 
-6. [ ] Modified Binary Search
-7. [ ] Cyclic Sort
-8. [ ] Merge Intervals
+6. [ ] [Modified Binary Search — 15 problems](dsa/problem-lists/06-modified-binary-search.md)
+7. [ ] [Cyclic Sort — 15 problems](dsa/problem-lists/07-cyclic-sort.md)
+8. [ ] [Merge Intervals — 15 problems](dsa/problem-lists/08-merge-intervals.md)
 
 ### Phase 3 — Heap Patterns
 
 Learn to maintain the most important elements without fully sorting the input.
 
-9. [ ] Top K Elements
-10. [ ] Two Heaps
-11. [ ] K-Way Merge
+9. [ ] [Top K Elements — 15 problems](dsa/problem-lists/09-top-k-elements.md)
+10. [ ] [Two Heaps — 15 problems](dsa/problem-lists/10-two-heaps.md)
+11. [ ] [K-Way Merge — 15 problems](dsa/problem-lists/11-k-way-merge.md)
 
 ### Phase 4 — Search and Construction
 
 Learn to explore choices, undo decisions, and make locally optimal decisions.
 
-12. [ ] Subsets
-13. [ ] Backtracking
-14. [ ] Greedy Techniques
+12. [ ] [Subsets — 15 problems](dsa/problem-lists/12-subsets.md)
+13. [ ] [Backtracking — 15 problems](dsa/problem-lists/13-backtracking.md)
+14. [ ] [Greedy Techniques — 15 problems](dsa/problem-lists/14-greedy-techniques.md)
 
 ### Phase 5 — Grids, Trees, and Graphs
 
 Learn representation, traversal, connectivity, and dependency ordering.
 
-15. [ ] Matrices
-16. [ ] Graphs
-17. [ ] DFS (Depth-First Search)
-18. [ ] BFS (Breadth-First Search)
-19. [ ] Topological Sort
-20. [ ] Union Find (Disjoint Set Union / DSU)
-21. [ ] Trie
+15. [ ] [Matrices — 15 problems](dsa/problem-lists/15-matrices.md)
+16. [ ] [Graphs — 15 problems](dsa/problem-lists/16-graphs.md)
+17. [ ] [DFS (Depth-First Search) — 15 problems](dsa/problem-lists/17-dfs.md)
+18. [ ] [BFS (Breadth-First Search) — 15 problems](dsa/problem-lists/18-bfs.md)
+19. [ ] [Topological Sort — 15 problems](dsa/problem-lists/19-topological-sort.md)
+20. [ ] [Union Find (Disjoint Set Union / DSU) — 15 problems](dsa/problem-lists/20-union-find.md)
+21. [ ] [Trie — 15 problems](dsa/problem-lists/21-trie.md)
 
 ### Phase 6 — Optimization and Math
 
 Finish with state optimization and specialized numeric techniques.
 
-22. [ ] Dynamic Programming
-23. [ ] Bitwise Manipulation
-24. [ ] Mathematical Patterns (GCD, Sieve of Eratosthenes, Fast Exponentiation)
+22. [ ] [Dynamic Programming — 15 problems](dsa/problem-lists/22-dynamic-programming.md)
+23. [ ] [Bitwise Manipulation — 15 problems](dsa/problem-lists/23-bitwise-manipulation.md)
+24. [ ] [Mathematical Patterns — 15 problems](dsa/problem-lists/24-mathematical-patterns.md) · GCD, Sieve of Eratosthenes, Fast Exponentiation
 
 > This is a valid interview-preparation set. It mixes data structures, broad topics, traversal methods, and specific techniques, but together they provide strong coverage of common DSA interviews.
 
