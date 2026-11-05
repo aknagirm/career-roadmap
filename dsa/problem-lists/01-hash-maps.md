@@ -12,8 +12,8 @@
 - [x] [242. Valid Anagram](https://leetcode.com/problems/valid-anagram/) · Solved with sorting
 
 ### Medium (2)
-- [ ] [49. Group Anagrams](https://leetcode.com/problems/group-anagrams/)
-- [ ] [347. Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/)
+- [x] [49. Group Anagrams](https://leetcode.com/problems/group-anagrams/) — [Analysis](../problems/hash-maps/0049-group-anagrams.md)
+- [x] [347. Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/) — [Analysis](../problems/hash-maps/0347-top-k-frequent-elements.md)
 
 ## Round 2 — Reinforce
 
@@ -39,7 +39,7 @@
 
 ## Progress
 
-- Round 1: `3/5`
+- Round 1: `5/5`
 - Round 2: `0/6`
 - Round 3: `0/4`
-- Total: `3/15`
+- Total: `5/15`
