@@ -7,9 +7,9 @@
 ## Round 1 — Learn
 
 ### Easy (3)
-- [ ] [1. Two Sum](https://leetcode.com/problems/two-sum/)
-- [ ] [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
-- [ ] [242. Valid Anagram](https://leetcode.com/problems/valid-anagram/)
+- [x] [1. Two Sum](https://leetcode.com/problems/two-sum/) — [Analysis](../problems/hash-maps/0001-two-sum.md)
+- [x] [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
+- [x] [242. Valid Anagram](https://leetcode.com/problems/valid-anagram/) · Solved with sorting
 
 ### Medium (2)
 - [ ] [49. Group Anagrams](https://leetcode.com/problems/group-anagrams/)
@@ -39,7 +39,7 @@
 
 ## Progress
 
-- Round 1: `0/5`
+- Round 1: `3/5`
 - Round 2: `0/6`
 - Round 3: `0/4`
-- Total: `0/15`
+- Total: `3/15`
