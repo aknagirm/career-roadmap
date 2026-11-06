@@ -5,13 +5,13 @@
 ## Round 1 — Learn
 
 ### Easy (3)
-- [ ] [20. Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)
-- [ ] [682. Baseball Game](https://leetcode.com/problems/baseball-game/)
-- [ ] [844. Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/)
+- [x] [20. Valid Parentheses](https://leetcode.com/problems/valid-parentheses/) — [Analysis](../problems/stacks/0020-valid-parentheses.md)
+- [x] [682. Baseball Game](https://leetcode.com/problems/baseball-game/)
+- [ ] [496. Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/) · Monotonic Stack introduction
 
 ### Medium (2)
 - [ ] [155. Min Stack](https://leetcode.com/problems/min-stack/)
-- [ ] [150. Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/)
+- [x] [150. Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/) — [Analysis](../problems/stacks/0150-evaluate-reverse-polish-notation.md)
 
 ## Round 2 — Reinforce
 
@@ -37,7 +37,7 @@
 
 ## Progress
 
-- Round 1: `0/5`
+- Round 1: `3/5`
 - Round 2: `0/6`
 - Round 3: `0/4`
-- Total: `0/15`
+- Total: `3/15`
